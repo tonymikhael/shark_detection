@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "601829912347",
+    "firebase_url": "https://shark-detection-b1f82-default-rtdb.firebaseio.com",
+    "project_id": "shark-detection-b1f82",
+    "storage_bucket": "shark-detection-b1f82.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601829912347:android:81af5a43c020deee3d6dbe",
+        "android_client_info": {
+          "package_name": "com.example.shark_detection"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8IN5ZknBy0LsznYnc3VyjHNyi4nEAQwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
