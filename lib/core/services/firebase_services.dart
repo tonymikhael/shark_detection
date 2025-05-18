@@ -73,15 +73,15 @@ class FCMService {
     });
 
     // التطبيق كان مغلق وفتح من إشعار
-    RemoteMessage? initialMessage =
-        await FirebaseMessaging.instance.getInitialMessage();
-    if (initialMessage != null) {
-      BlocProvider.of<AppCubit>(navigatorKey.currentContext!)
-          .setNotificationReceived();
-      print(
-          'App opened from terminated state: ${initialMessage.notification?.title}');
-      // نفذ أمر معين إذا فتح من إشعار
-    }
+    // RemoteMessage? initialMessage =
+    //     await FirebaseMessaging.instance.getInitialMessage();
+    // if (initialMessage != null) {
+    //   // BlocProvider.of<AppCubit>(navigatorKey.currentContext!)
+    //   //     .setNotificationReceived();
+    //   print(
+    //       'App opened from terminated state: ${initialMessage.notification?.title}');
+    //   // نفذ أمر معين إذا فتح من إشعار
+    // }
   }
 
   static Future<void> _showNotification(RemoteMessage message) async {

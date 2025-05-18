@@ -16,7 +16,7 @@ class MainScaffold extends StatefulWidget {
 
 class _MainScaffoldState extends State<MainScaffold> {
   int currentIndex = 0;
-  List screens = [
+  List screens = const [
     HomeView(),
     LiveView(),
     StatisticsView(),
@@ -30,7 +30,6 @@ class _MainScaffoldState extends State<MainScaffold> {
         onTap: (value) {
           currentIndex = value;
           setState(() {});
-          print(currentIndex);
         },
         items: [
           /// Home
@@ -39,7 +38,6 @@ class _MainScaffoldState extends State<MainScaffold> {
             title: Text("Home"),
             selectedColor: AppColors.primaryColor,
           ),
-
           /// Likes
           SalomonBottomBarItem(
             icon: Icon(Icons.video_camera_back),

@@ -21,6 +21,20 @@ void main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await FCMService.initializeFCM();
   runApp(MyApp());
+
+  Future.delayed(Duration.zero, () async {
+    RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+
+    if (initialMessage != null) {
+      print(
+          'App opened from terminated state: ${initialMessage.notification?.title}');
+      final context = navigatorKey.currentContext;
+      if (context != null) {
+        BlocProvider.of<AppCubit>(context).setNotificationReceived();
+      }
+    }
+  });
 }
 
 class MyApp extends StatelessWidget {
