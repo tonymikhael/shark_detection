@@ -31,6 +31,8 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = false      // تعطيل تصغير الكود
+            isShrinkResources = false     // تعطيل تصغير الموارد (shrink)
         }
     }
 }
