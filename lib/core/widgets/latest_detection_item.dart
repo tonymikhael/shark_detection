@@ -1,13 +1,26 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:shark_detection/core/services/supabase_service.dart';
 import 'package:shark_detection/core/utils/app_colors.dart';
 import 'package:shark_detection/core/utils/app_styles.dart';
+import 'package:shark_detection/features/home/views/custom_image_view.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LatestDetectionItem extends StatelessWidget {
   const LatestDetectionItem({
     super.key,
+    required this.imageUrl,
+    required this.detectionTime,
+    required this.seen,
+    required this.id,
   });
+
+  final String imageUrl;
+  final String detectionTime;
+  final bool seen;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -22,40 +35,66 @@ class LatestDetectionItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CachedNetworkImage(
-            height: 80.h,
-            width: 120.w,
-            fit: BoxFit.fill,
-            imageUrl:
-                "https://d1jyxxz9imt9yb.cloudfront.net/medialib/5080/image/s768x1300/VMIGNONPO1_reduced.jpg",
-            placeholder: (context, url) => Center(
-              child: CircularProgressIndicator(
-                color: AppColors.primaryColor,
+          GestureDetector(
+            onTap: () {
+              // make the seen true
+              SupabaseService().seenImage(id: id);
+              //----------------------------------
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) {
+                    return CustomImageView(imageUrl: imageUrl);
+                  },
+                ),
+              );
+            },
+            child: CachedNetworkImage(
+              height: 70.h,
+              width: 100.w,
+              fit: BoxFit.fill,
+              imageUrl: imageUrl,
+              placeholder: (context, url) => Center(
+                child: CircularProgressIndicator(),
               ),
-            ),
-            errorWidget: (context, url, error) => Icon(
-              Icons.error_outline_rounded,
-              color: AppColors.primaryColor,
+              errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
           SizedBox(
             width: 8,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Detection Time',
-                style: AppStyles.body1(context),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Text(
-                '8:30 2/6/2025',
-                style: AppStyles.body2(context).copyWith(color: Colors.grey),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Detection Time',
+                  style: AppStyles.body1(context),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  detectionTime,
+                  style:
+                      AppStyles.caption(context).copyWith(color: Colors.grey),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    seen
+                        ? SizedBox()
+                        : Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color: AppColors.primaryColor,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Text('New'),
+                          ),
+                  ],
+                )
+              ],
+            ),
           ),
         ],
       ),

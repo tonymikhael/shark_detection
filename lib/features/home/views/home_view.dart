@@ -7,6 +7,7 @@ import 'package:shark_detection/core/utils/app_styles.dart';
 import 'package:shark_detection/core/widgets/custom_appbar.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shark_detection/features/home/view%20model/cubit/app_cubit.dart';
+import 'package:shark_detection/features/home/view%20model/cubit/app_state.dart';
 import 'package:shark_detection/features/home/views/detected_view.dart';
 import 'package:shark_detection/features/home/views/not_detected_view.dart';
 
@@ -15,12 +16,12 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit, bool>(
+    return BlocConsumer<AppCubit, AppState>(
       listener: (context, state) {
         log(state.toString());
       },
       builder: (context, state) {
-        if (state) {
+        if (state is SetSharkDetectedState) {
           return DetectedView();
         } else {
           return NotDetectedView();

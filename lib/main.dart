@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shark_detection/core/services/firebase_services.dart';
+import 'package:shark_detection/core/services/supabase_service.dart';
 import 'package:shark_detection/features/home/view%20model/cubit/app_cubit.dart';
 import 'package:shark_detection/features/home/views/main_scaffold.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:timezone/data/latest.dart' as tzdata;
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -18,12 +21,21 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //initialize timezone to egypt
+  tzdata.initializeTimeZones();
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await FCMService.initializeFCM();
 
-  runApp(MyApp());
+  await Supabase.initialize(
+    url: 'https://jigmgjiercwnsyevrnbc.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppZ21namllcmN3bnN5ZXZybmJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg4NjI0MzMsImV4cCI6MjA2NDQzODQzM30.xG8GftrQENz8ppgB4Fcy2-Ih1hTjKovlMSIqWGjs-20',
+  );
 
+  SupabaseService().getAllImagesRealtime;
+
+  runApp(MyApp());
   Future.delayed(Duration.zero, () async {
     RemoteMessage? initialMessage =
         await FirebaseMessaging.instance.getInitialMessage();

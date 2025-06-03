@@ -33,17 +33,6 @@ class CustomAppBar extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 10),
-            Container(
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(15)),
-                child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.dark_mode,
-                      color: Colors.white,
-                    )))
           ],
         ),
       ],
