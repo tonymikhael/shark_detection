@@ -7,7 +7,10 @@ import 'package:shark_detection/core/utils/app_styles.dart';
 import 'package:shark_detection/features/home/view%20model/cubit/app_cubit.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({super.key, required this.leading, this.action});
+
+  final String leading;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
@@ -15,26 +18,10 @@ class CustomAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "Hi, Guard",
+          leading,
           style: AppStyles.headline1(context),
         ),
-        Row(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.black, borderRadius: BorderRadius.circular(15)),
-              child: IconButton(
-                onPressed: () {
-                  BlocProvider.of<AppCubit>(context).resetNotification();
-                },
-                icon: Icon(
-                  Icons.offline_bolt_rounded,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
-        ),
+        action??SizedBox(),
       ],
     );
   }

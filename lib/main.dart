@@ -3,9 +3,12 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shark_detection/core/services/firebase_services.dart';
+import 'package:shark_detection/core/services/shared_pref.dart';
 import 'package:shark_detection/core/services/supabase_service.dart';
 import 'package:shark_detection/features/home/view%20model/cubit/app_cubit.dart';
+import 'package:shark_detection/features/home/view%20model/cubit/app_state.dart';
 import 'package:shark_detection/features/home/views/main_scaffold.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
@@ -23,6 +26,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //initialize timezone to egypt
   tzdata.initializeTimeZones();
+  await SharedPref().init();
+
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await FCMService.initializeFCM();
@@ -62,11 +67,17 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: BlocProvider(
         create: (context) => AppCubit(),
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          navigatorKey: navigatorKey,
-          theme: ThemeData.dark(),
-          home: MainScaffold(),
+        child: BlocBuilder<AppCubit, AppState>(
+          builder: (context, state) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              navigatorKey: navigatorKey,
+              theme: SharedPref.prefs!.getBool('dark') == true
+                  ? ThemeData.dark()
+                  : ThemeData.light(),
+              home: MainScaffold(),
+            );
+          },
         ),
       ),
     );

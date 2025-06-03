@@ -11,3 +11,5 @@ final class LoadingState extends AppState {}
 final class SetFlagState extends AppState {}
 
 final class ResetFlagState extends AppState {}
+
+final class ChangeAppThemeState extends AppState {}

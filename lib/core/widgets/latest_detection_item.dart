@@ -29,7 +29,9 @@ class LatestDetectionItem extends StatelessWidget {
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.black26,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.black26
+            : Colors.grey[200],
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(

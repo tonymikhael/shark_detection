@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shark_detection/core/utils/app_styles.dart';
 import 'package:shark_detection/core/widgets/custom_appbar.dart';
+import 'package:shark_detection/features/home/view%20model/cubit/app_cubit.dart';
 
 class DetectedView extends StatelessWidget {
   const DetectedView({
@@ -26,7 +28,23 @@ class DetectedView extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomAppBar(),
+              CustomAppBar(
+                leading: 'Hi, Guard',
+                action: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: IconButton(
+                    onPressed: () {
+                      BlocProvider.of<AppCubit>(context).resetNotification();
+                    },
+                    icon: Icon(
+                      Icons.offline_bolt_rounded,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
