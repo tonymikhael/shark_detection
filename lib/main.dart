@@ -15,6 +15,8 @@ import 'package:timezone/data/latest.dart' as tzdata;
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print('test');
+
   await Firebase.initializeApp();
   BlocProvider.of<AppCubit>(navigatorKey.currentContext!)
       .setNotificationReceived();
