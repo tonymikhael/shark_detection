@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shark_detection/core/services/shared_pref.dart';
 import 'package:shark_detection/core/utils/app_colors.dart';
 import 'package:shark_detection/core/utils/app_styles.dart';
 

@@ -1,12 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:photo_view/photo_view.dart';
 import 'package:shark_detection/core/services/supabase_service.dart';
 import 'package:shark_detection/core/utils/app_colors.dart';
 import 'package:shark_detection/core/utils/app_styles.dart';
 import 'package:shark_detection/features/home/views/custom_image_view.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LatestDetectionItem extends StatelessWidget {
   const LatestDetectionItem({

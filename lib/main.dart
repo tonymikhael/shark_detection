@@ -3,7 +3,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shark_detection/core/services/firebase_services.dart';
 import 'package:shark_detection/core/services/shared_pref.dart';
 import 'package:shark_detection/core/services/supabase_service.dart';

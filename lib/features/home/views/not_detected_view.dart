@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shark_detection/core/utils/app_styles.dart';
 import 'package:shark_detection/core/widgets/custom_appbar.dart';
