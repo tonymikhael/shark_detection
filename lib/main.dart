@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -5,30 +6,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shark_detection/core/services/firebase_services.dart';
 import 'package:shark_detection/core/services/shared_pref.dart';
-import 'package:shark_detection/core/services/supabase_service.dart';
 import 'package:shark_detection/features/home/view%20model/cubit/app_cubit.dart';
 import 'package:shark_detection/features/home/view%20model/cubit/app_state.dart';
 import 'package:shark_detection/features/home/views/main_scaffold.dart';
+import 'package:shark_detection/features/home/views/splash_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print('test');
-
   await Firebase.initializeApp();
-  BlocProvider.of<AppCubit>(navigatorKey.currentContext!)
-      .setNotificationReceived();
-  print('Background Message: ${message.messageId}');
 }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Easy Localization
+  await EasyLocalization.ensureInitialized();
   //initialize timezone to egypt
   tzdata.initializeTimeZones();
   await SharedPref().init();
-
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await FCMService.initializeFCM();
@@ -39,22 +37,13 @@ void main() async {
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppZ21namllcmN3bnN5ZXZybmJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg4NjI0MzMsImV4cCI6MjA2NDQzODQzM30.xG8GftrQENz8ppgB4Fcy2-Ih1hTjKovlMSIqWGjs-20',
   );
 
-  SupabaseService().getAllImagesRealtime;
-
-  runApp(MyApp());
-  Future.delayed(Duration.zero, () async {
-    RemoteMessage? initialMessage =
-        await FirebaseMessaging.instance.getInitialMessage();
-
-    if (initialMessage != null) {
-      print(
-          'App opened from terminated state: ${initialMessage.notification?.title}');
-      final context = navigatorKey.currentContext;
-      if (context != null) {
-        BlocProvider.of<AppCubit>(context).setNotificationReceived();
-      }
-    }
-  });
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en'), Locale('ar')],
+      path: 'assets/translations',
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -69,14 +58,20 @@ class MyApp extends StatelessWidget {
       child: BlocProvider(
         create: (context) => AppCubit(),
         child: BlocBuilder<AppCubit, AppState>(
+          buildWhen: (previous, current) =>
+              current is ChangeAppThemeState || current is ChangeLanguageState,
           builder: (context, state) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               navigatorKey: navigatorKey,
+              // Localization
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: Locale(SharedPref().getLanguage()),
               theme: SharedPref.prefs!.getBool('dark') == true
                   ? ThemeData.dark()
                   : ThemeData.light(),
-              home: MainScaffold(),
+              home: SplashScreen(),
             );
           },
         ),

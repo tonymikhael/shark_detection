@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shark_detection/core/utils/app_styles.dart';
@@ -21,7 +22,7 @@ class AboutUsView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomAppBar(
-                  leading: 'About Us',
+                  leading: 'aboutUs'.tr(),
                 ),
                 SizedBox(
                   height: 5,
@@ -33,7 +34,7 @@ class AboutUsView extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  'App Name & Logo',
+                  'appNameLogo'.tr(),
                   style: AppStyles.subtitle1(context),
                 ),
                 Row(
@@ -51,28 +52,28 @@ class AboutUsView extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  'Short Introduction',
+                  'shortIntro'.tr(),
                   style: AppStyles.subtitle1(context),
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(
-                  'Shark Detection is an innovative application designed to enhance beach safety by using AI-powered camera systems to detect sharks in real-time',
+                  'shortIntroBody'.tr(),
                   style: AppStyles.body2(context),
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(
-                  'Our Mission',
+                  'ourMission'.tr(),
                   style: AppStyles.subtitle1(context),
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(
-                  'Our mission is to protect lives by providing early warnings of shark presence through smart surveillance technology, helping lifeguards and beachgoers stay safe.',
+                  'ourMissionBody'.tr(),
                   style: AppStyles.body2(context),
                 ),
                 SizedBox(
@@ -82,56 +83,28 @@ class AboutUsView extends StatelessWidget {
                   height: 8,
                 ),
                 Text(
-                  'How it works',
+                  'howItWorks'.tr(),
                   style: AppStyles.subtitle1(context),
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(
-                  '. The app connects with live camera feeds',
-                  style: AppStyles.body2(context),
-                ),
-                Text(
-                  '. YOLOv8 AI model analyzes the video to detect sharks.',
-                  style: AppStyles.body2(context),
-                ),
-                Text(
-                  '. If a shark is detected, an alarm is triggered and a notification is sent instantly.',
-                  style: AppStyles.body2(context),
-                ),
-                Text(
-                  '. The app also provides a live view from the camera for real-time monitoring.',
+                  'howItWorksBody'.tr(),
                   style: AppStyles.body2(context),
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(
-                  'Technology Used',
+                  'technologyUsed'.tr(),
                   style: AppStyles.subtitle1(context),
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(
-                  '. YOLOv8 for object detection',
-                  style: AppStyles.body2(context),
-                ),
-                Text(
-                  '. Jetson Device for edge processing',
-                  style: AppStyles.body2(context),
-                ),
-                Text(
-                  '. Firebase for real-time notification',
-                  style: AppStyles.body2(context),
-                ),
-                Text(
-                  '. Flutter for mobile interface',
-                  style: AppStyles.body2(context),
-                ),
-                Text(
-                  '. Supabase for image storage',
+                  'technologyUsedBody'.tr(),
                   style: AppStyles.body2(context),
                 ),
               ],

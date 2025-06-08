@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,7 +30,7 @@ class DetectedView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppBar(
-                leading: 'Hi, Guard',
+                leading: 'hiGuard'.tr(),
                 action: Container(
                   decoration: BoxDecoration(
                       color: Colors.black,
@@ -49,7 +50,7 @@ class DetectedView extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                'Ready to catch some Shark\'s today?',
+                'seeTheDanger'.tr(),
                 style: AppStyles.subtitle1(context),
               ),
               SizedBox(
@@ -66,7 +67,7 @@ class DetectedView extends StatelessWidget {
                         color: Colors.red,
                       ),
                       Text(
-                        "There is an shark",
+                        "thereisShark".tr(),
                         style: AppStyles.body1(context)
                             .copyWith(color: Colors.red),
                       ),

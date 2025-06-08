@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:shark_detection/core/utils/app_colors.dart';
@@ -6,7 +7,7 @@ import 'package:shark_detection/features/home/views/live_view.dart';
 import 'package:shark_detection/features/home/views/setting_view.dart';
 
 class MainScaffold extends StatefulWidget {
-  const MainScaffold({super.key});
+  const MainScaffold({Key? key}) : super(key: key);
 
   @override
   State<MainScaffold> createState() => _MainScaffoldState();
@@ -30,22 +31,19 @@ class _MainScaffoldState extends State<MainScaffold> {
           setState(() {});
         },
         items: [
-          /// Home
           SalomonBottomBarItem(
             icon: Icon(Icons.home),
-            title: Text("Home"),
+            title: Text('home'.tr()),
             selectedColor: AppColors.primaryColor,
           ),
-
           SalomonBottomBarItem(
             icon: Icon(Icons.video_camera_back),
-            title: Text("Live stream"),
+            title: Text('liveStream'.tr()),
             selectedColor: AppColors.primaryColor,
           ),
-
           SalomonBottomBarItem(
             icon: Icon(Icons.settings),
-            title: Text("Settings"),
+            title: Text('settings'.tr()),
             selectedColor: AppColors.primaryColor,
           ),
         ],

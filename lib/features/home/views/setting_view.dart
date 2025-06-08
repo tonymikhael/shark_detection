@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shark_detection/core/utils/app_styles.dart';
@@ -8,7 +9,7 @@ import 'package:shark_detection/features/home/view%20model/cubit/app_cubit.dart'
 import 'package:shark_detection/features/home/views/about_us_view.dart';
 
 class SettingView extends StatelessWidget {
-  const SettingView({super.key});
+  const SettingView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class SettingView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomAppBar(leading: 'Settings'),
+              CustomAppBar(leading: 'settings'.tr()),
               SizedBox(
                 height: 5,
               ),
@@ -29,7 +30,7 @@ class SettingView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 child: Text(
-                  'Apperance',
+                  'appearance'.tr(),
                   style: AppStyles.subtitle1(context),
                 ),
               ),
@@ -37,12 +38,40 @@ class SettingView extends StatelessWidget {
                 height: 5,
               ),
               CustomSettingItem(
-                leading: 'Change Language',
+                leading: 'changeLanguage'.tr(),
                 icon: Icons.language,
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('changeLanguage'.tr()),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ListTile(
+                            title: Text('english'.tr()),
+                            onTap: () {
+                              BlocProvider.of<AppCubit>(context)
+                                  .changeLanguage(context, 'en');
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            title: Text('arabic'.tr()),
+                            onTap: () {
+                              BlocProvider.of<AppCubit>(context)
+                                  .changeLanguage(context, 'ar');
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
               CustomSettingItem(
-                leading: 'Dark / Light Mode',
+                leading: 'darkLightMode'.tr(),
                 icon: Icons.dark_mode,
                 onTap: () {
                   BlocProvider.of<AppCubit>(context).changeAppTheme();
@@ -51,12 +80,12 @@ class SettingView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 child: Text(
-                  'About Us',
+                  'aboutUs'.tr(),
                   style: AppStyles.subtitle1(context),
                 ),
               ),
               CustomSettingItem(
-                leading: 'About Us',
+                leading: 'aboutUs'.tr(),
                 icon: Icons.people_alt_outlined,
                 onTap: () {
                   Navigator.push(
@@ -68,7 +97,7 @@ class SettingView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 child: Text(
-                  'Contact Us',
+                  'contactUs'.tr(),
                   style: AppStyles.subtitle1(context),
                 ),
               ),

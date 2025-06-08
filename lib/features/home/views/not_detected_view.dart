@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -28,7 +29,7 @@ class NotDetectedView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppBar(
-                leading: 'Hi, Guard',
+                leading: 'hiGuard'.tr(),
                 action: Container(
                   decoration: BoxDecoration(
                       color: Colors.black,
@@ -48,7 +49,7 @@ class NotDetectedView extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                'Ready to catch some Shark\'s today?',
+                'seeTheDanger'.tr(),
                 style: AppStyles.subtitle1(context),
               ),
               SizedBox(
@@ -65,7 +66,7 @@ class NotDetectedView extends StatelessWidget {
                         color: Colors.green,
                       ),
                       Text(
-                        "The water is clear",
+                        "waterClear".tr(),
                         style: AppStyles.body1(context).copyWith(
                             color: Theme.of(context)
                                 .textTheme

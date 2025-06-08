@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,17 +49,17 @@ class LiveView extends StatelessWidget {
                 if (state is SetFlagState) {
                   showToast(
                     context,
-                    title: "Buzzer On",
+                    title: 'buzzerOn'.tr(),
                     icon: const Icon(Icons.warning),
-                    description: 'A Shark detected in the area',
+                    description: 'sharkDetected'.tr(),
                     bgColor: AppColors.secondaryColor,
                   );
                 } else if (state is ResetFlagState) {
                   showToast(
                     context,
-                    title: "Buzzer Off",
+                    title: 'buzzerOff'.tr(),
                     icon: const Icon(Icons.water),
-                    description: 'The water is clear',
+                    description: 'waterClear'.tr(),
                     bgColor: AppColors.primaryColor,
                   );
                 }
@@ -78,7 +79,7 @@ class LiveView extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'Buzzer On',
+                      'buzzerOn'.tr(),
                       style: AppStyles.body1(context)
                           .copyWith(color: Colors.white),
                     ),
@@ -95,7 +96,7 @@ class LiveView extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'Buzzer Off',
+                      'buzzerOff'.tr(),
                       style: AppStyles.body1(context)
                           .copyWith(color: Colors.white),
                     ),
@@ -105,7 +106,7 @@ class LiveView extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              'Latest Shark detection',
+              'latestSharkDetection'.tr(),
               style: AppStyles.subtitle1(context),
             ),
             const SizedBox(height: 12),
