@@ -1,11 +1,11 @@
+import 'package:AquaSentinels/core/utils/app_styles.dart';
+import 'package:AquaSentinels/core/widgets/custom_appbar.dart';
+import 'package:AquaSentinels/features/home/view%20model/cubit/app_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
-import 'package:shark_detection/core/utils/app_styles.dart';
-import 'package:shark_detection/core/widgets/custom_appbar.dart';
-import 'package:shark_detection/features/home/view%20model/cubit/app_cubit.dart';
 
 class DetectedView extends StatelessWidget {
   const DetectedView({

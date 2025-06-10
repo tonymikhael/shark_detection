@@ -1,12 +1,13 @@
+import 'package:AquaSentinels/core/utils/app_styles.dart';
+import 'package:AquaSentinels/core/widgets/custom_appbar.dart';
+import 'package:AquaSentinels/core/widgets/custom_setting_item.dart';
+import 'package:AquaSentinels/core/widgets/social_media_button.dart';
+import 'package:AquaSentinels/features/home/view%20model/cubit/app_cubit.dart';
+import 'package:AquaSentinels/features/home/views/about_us_view.dart';
+import 'package:AquaSentinels/features/home/views/splash_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shark_detection/core/utils/app_styles.dart';
-import 'package:shark_detection/core/widgets/custom_appbar.dart';
-import 'package:shark_detection/core/widgets/custom_setting_item.dart';
-import 'package:shark_detection/core/widgets/social_media_button.dart';
-import 'package:shark_detection/features/home/view%20model/cubit/app_cubit.dart';
-import 'package:shark_detection/features/home/views/about_us_view.dart';
 
 class SettingView extends StatelessWidget {
   const SettingView({Key? key}) : super(key: key);
@@ -53,7 +54,10 @@ class SettingView extends StatelessWidget {
                             onTap: () {
                               BlocProvider.of<AppCubit>(context)
                                   .changeLanguage(context, 'en');
-                              Navigator.pop(context);
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SplashScreen()));
                             },
                           ),
                           ListTile(
@@ -61,7 +65,10 @@ class SettingView extends StatelessWidget {
                             onTap: () {
                               BlocProvider.of<AppCubit>(context)
                                   .changeLanguage(context, 'ar');
-                              Navigator.pop(context);
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SplashScreen()));
                             },
                           ),
                         ],

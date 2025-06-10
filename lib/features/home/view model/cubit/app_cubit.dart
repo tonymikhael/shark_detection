@@ -1,10 +1,9 @@
+import 'package:AquaSentinels/core/services/firestore_services.dart';
+import 'package:AquaSentinels/core/services/shared_pref.dart';
+import 'package:AquaSentinels/features/home/view%20model/cubit/app_state.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shark_detection/core/services/firebase_services.dart';
-import 'package:shark_detection/core/services/firestore_services.dart';
-import 'package:shark_detection/core/services/shared_pref.dart';
-import 'package:shark_detection/features/home/view%20model/cubit/app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(AppInitial());

@@ -1,11 +1,11 @@
 import 'dart:developer';
 
+import 'package:AquaSentinels/core/services/firestore_services.dart';
+import 'package:AquaSentinels/features/home/view%20model/cubit/app_cubit.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:shark_detection/core/services/firestore_services.dart';
-import 'package:shark_detection/features/home/view%20model/cubit/app_cubit.dart';
-import 'package:shark_detection/main.dart';
+import 'package:AquaSentinels/main.dart';
 
 class FCMService {
   static final FirebaseMessaging _messaging = FirebaseMessaging.instance;

@@ -1,11 +1,11 @@
+import 'package:AquaSentinels/core/services/supabase_service.dart';
+import 'package:AquaSentinels/core/utils/app_colors.dart';
+import 'package:AquaSentinels/core/utils/app_styles.dart';
+import 'package:AquaSentinels/features/home/views/custom_image_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shark_detection/core/services/supabase_service.dart';
-import 'package:shark_detection/core/utils/app_colors.dart';
-import 'package:shark_detection/core/utils/app_styles.dart';
-import 'package:shark_detection/features/home/views/custom_image_view.dart';
 
 class LatestDetectionItem extends StatelessWidget {
   const LatestDetectionItem({
@@ -29,7 +29,7 @@ class LatestDetectionItem extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
-            ? Colors.black26
+            ? Colors.black45
             : Colors.grey[200],
         borderRadius: BorderRadius.circular(12),
       ),

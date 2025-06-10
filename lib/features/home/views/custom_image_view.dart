@@ -1,6 +1,6 @@
+import 'package:AquaSentinels/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:shark_detection/core/utils/app_colors.dart';
 
 class CustomImageView extends StatelessWidget {
   const CustomImageView({

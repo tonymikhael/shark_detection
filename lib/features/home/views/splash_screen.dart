@@ -1,10 +1,11 @@
+import 'package:AquaSentinels/core/utils/app_colors.dart';
+import 'package:AquaSentinels/core/utils/app_styles.dart';
+import 'package:AquaSentinels/features/home/views/main_scaffold.dart';
+import 'package:AquaSentinels/main.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shark_detection/core/utils/app_colors.dart';
-import 'package:shark_detection/core/utils/app_styles.dart';
-import 'package:shark_detection/features/home/views/main_scaffold.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

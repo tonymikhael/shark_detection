@@ -1,10 +1,10 @@
+import 'package:AquaSentinels/core/utils/app_colors.dart';
+import 'package:AquaSentinels/features/home/views/home_view.dart';
+import 'package:AquaSentinels/features/home/views/live_view.dart';
+import 'package:AquaSentinels/features/home/views/setting_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:shark_detection/core/utils/app_colors.dart';
-import 'package:shark_detection/features/home/views/home_view.dart';
-import 'package:shark_detection/features/home/views/live_view.dart';
-import 'package:shark_detection/features/home/views/setting_view.dart';
 
 class MainScaffold extends StatefulWidget {
   const MainScaffold({Key? key}) : super(key: key);
